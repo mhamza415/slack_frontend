@@ -1,5 +1,7 @@
 <template>
   <div class="main">
+    <div class="circle2"></div>
+    <div class="circle3"></div>
     <div class="signup">
       <div class="form">
         <h1>Enter your Email Address</h1>
@@ -14,11 +16,11 @@
         <button @click="signIn">Log In</button><br />
         <p class="pp"><span>New to Slack?</span> <a href=""> Register </a></p>
         <div class="diff">
-          <hr style="width: 120px; margin-left: 40px; margin-top: 45px" />
+          <hr style="width: 100px; margin-left: 40px; margin-top: 45px" />
           <span
             style="
               position: absolute;
-              top: 74%;
+              top: 78%;
               left: 50%;
               transform: translate(-50%, -50%);
               color: #fff;
@@ -26,7 +28,7 @@
             "
             >OR</span
           >
-          <hr style="width: 110px; margin-right: 40px; float: right" />
+          <hr style="width: 100px; margin-right: 40px; float: right" />
         </div>
         <a href="default.asp"
           ><img
@@ -55,9 +57,11 @@ export default {
           email: this.email,
         });
         console.log(result);
-        if (result.status == 201) {
+        if (result.status == 201 || result.status == 200) {
           localStorage.setItem("user:info", JSON.stringify(result.data));
-          localStorage.setItem("email", JSON.stringify(result.data.email));
+          localStorage.setItem("email", this.email);
+          localStorage.setItem("token", result.data.token);
+          localStorage.setItem("id", result.data.id);
           this.$router.push({ name: "OtpPad" });
         }
       } catch (error) {
@@ -80,11 +84,29 @@ export default {
   display: flex;
   justify-content: center;
 }
+.circle2 {
+  width: 14rem;
+  height: 14rem;
+  position: absolute;
+  border-radius: 50%;
+  background: linear-gradient(to right, #530061, #0d0a30);
+  margin-left: 420px;
+  margin-top: -15px;
+}
+.circle3 {
+  width: 10rem;
+  height: 10rem;
+  position: absolute;
+  border-radius: 50%;
+  background: linear-gradient(to right, #300061, #0a1030);
+  margin-left: 1050px;
+  margin-top: 450px;
+}
 .form {
   color: #fff;
   width: 390px;
   height: 500px;
-  background-color: #030303;
+
   margin-top: 70px;
   margin-bottom: 70px;
   border: 0.1px solid grey;

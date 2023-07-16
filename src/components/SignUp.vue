@@ -1,5 +1,7 @@
 <template>
   <div class="main">
+    <div class="circle"></div>
+    <div class="circle1"></div>
     <div class="signup">
       <div class="form">
         <h1><span>Register</span> your Email address</h1>
@@ -15,11 +17,11 @@
         <button @click="signUp">Sign Up</button><br />
         <p>Already Registered? <a href=""> Login </a></p>
         <div class="diff">
-          <hr style="width: 120px; margin-left: 40px; margin-top: 45px" />
+          <hr style="width: 100px; margin-left: 40px; margin-top: 45px" />
           <span
             style="
               position: absolute;
-              top: 65%;
+              top: 67%;
               left: 50%;
               transform: translate(-50%, -50%);
               color: #fff;
@@ -27,7 +29,7 @@
             "
             >OR</span
           >
-          <hr style="width: 120px; margin-right: 40px; float: right" />
+          <hr style="width: 100px; margin-right: 40px; float: right" />
         </div>
         <a href="default.asp"
           ><img
@@ -56,9 +58,9 @@ export default {
           email: this.email,
         });
         console.log(result);
-        if (result.status == 201) {
+        if (result.status == 201 || result.status == 200) {
           localStorage.setItem("user:info", JSON.stringify(result.data));
-          localStorage.setItem("email", JSON.stringify(result.data.email));
+          localStorage.setItem("email", this.email);
           this.$router.push({ name: "OtpPad" });
         }
       } catch (error) {
@@ -81,17 +83,35 @@ export default {
   display: flex;
   justify-content: center;
 }
+.circle {
+  width: 14rem;
+  height: 14rem;
+  position: absolute;
+  border-radius: 50%;
+  background: linear-gradient(to right, #0a1b30, #190061);
+  margin-left: 420px;
+  margin-top: -15px;
+}
+.circle1 {
+  width: 10rem;
+  height: 10rem;
+  position: absolute;
+  border-radius: 50%;
+  background: linear-gradient(to right, #0a1b30, #190061);
+  margin-left: 1050px;
+  margin-top: 450px;
+}
 .form {
   color: #fff;
-  width: 390px;
+  width: 350px;
   height: 500px;
-  background-color: #030303;
   margin-top: 70px;
   margin-bottom: 70px;
   border: 0.1px solid grey;
   border-radius: 20px;
   margin-left: 1%;
   margin-right: 50%;
+  position: relative;
 }
 .form:hover {
   border: 2px solid #1877f2;
@@ -137,7 +157,8 @@ export default {
   margin-top: 30px;
   color: #ffffff;
   font-weight: bold;
-  background: #530061;
+  /* background: #530061; */
+  background-image: linear-gradient(to right, #530061, #0d0a30);
   border-radius: 10px;
   border-color: #fff;
   cursor: pointer;
@@ -162,6 +183,6 @@ export default {
 
 .form img {
   margin-top: 30px;
-  margin-left: 170px;
+  margin-left: 130px;
 }
 </style>
