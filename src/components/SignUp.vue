@@ -60,7 +60,9 @@ export default {
         console.log(result);
         if (result.status == 201 || result.status == 200) {
           localStorage.setItem("user:info", JSON.stringify(result.data));
+
           localStorage.setItem("email", this.email);
+
           this.$router.push({ name: "OtpPad" });
         }
       } catch (error) {

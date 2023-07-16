@@ -62,6 +62,7 @@ export default {
           localStorage.setItem("email", this.email);
           localStorage.setItem("token", result.data.token);
           localStorage.setItem("id", result.data.id);
+
           this.$router.push({ name: "OtpPad" });
         }
       } catch (error) {

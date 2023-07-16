@@ -3,10 +3,9 @@ import SignUp from "./components/SignUp.vue";
 import OtpPad from "./components/OtpPad.vue";
 import CreateWorkspace from "./components/CreateWorkspace.vue";
 import UploadName from "./components/UploadName.vue";
+
 import DashBoard from "./components/DashBoard.vue";
 import GetWorkspace from "./components/GetWorkspace.vue";
-
-import { createRouter, createWebHistory } from "vue-router";
 
 const routes = [
   {
@@ -27,6 +26,7 @@ const routes = [
   },
   {
     name: "CreateWorkspace",
+
     component: CreateWorkspace,
     path: "/space",
   },
